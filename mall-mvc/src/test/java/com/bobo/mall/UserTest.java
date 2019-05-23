@@ -5,7 +5,10 @@ import com.bobo.mall.api.entity.Address;
 import com.bobo.mall.api.entity.User;
 import com.bobo.mall.api.service.IAddressService;
 import com.bobo.mall.api.service.IUserService;
+import com.bobo.mall.mvc.service.UserServiceWrapper;
 import org.junit.Test;
+
+import javax.annotation.Resource;
 
 public class UserTest extends BaseTest {
 
@@ -15,10 +18,13 @@ public class UserTest extends BaseTest {
     @Reference
     private IAddressService addressService;
 
+    @Resource
+    private UserServiceWrapper userServiceWrapper;
+
     @Test
     public void f1() {
 
-        User user = userService.getUserById(1);
+        User user = userServiceWrapper.getUserById(1);
         System.out.println(user);
 
 
