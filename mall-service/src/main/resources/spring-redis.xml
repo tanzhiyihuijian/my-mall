@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+       default-lazy-init="true">
+
+
+    <!-- redis连接池配置 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}" />                        <!-- 最大空闲连接数 -->
+        <property name="minIdle" value="${redis.minIdle}" />                        <!-- 最小空闲连接数 -->
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />            <!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 -->
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />              <!-- 在获取连接的时候检查有效性, 默认false -->
+    </bean>
+
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="usePool" value="true" />
+        <property name="hostName" value="${redis.host}" />
+        <property name="port" value="${redis.port}" />
+        <property name="password" value="${redis.pass}" />
+        <property name="timeout" value="${redis.timeout}" />
+        <property name="database" value="${redis.db}" />
+        <property name="poolConfig" ref="jedisPoolConfig" />
+    </bean>
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="keySerializer" ref="stringRedisSerializer" />
+<!--        <property name="valueSerializer" ref="jdkSerializationRedisSerializer" />-->
+        <property name="hashKeySerializer" ref="stringRedisSerializer" />
+<!--        <property name="hashValueSerializer" ref="genericJackson2JsonRedisSerializer" />-->
+        <property name="defaultSerializer" ref="fastJsonRedisSerializer" />
+    </bean>
+
+    <bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+
+    <bean id="jdkSerializationRedisSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+
+    <bean id="genericJackson2JsonRedisSerializer" class="org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer" />
+
+    <bean id="fastJsonRedisSerializer" class="com.bobo.mall.service.redis.FastJsonRedisSerializer">
+        <constructor-arg type="java.lang.Class" value="java.lang.Object" />
+    </bean>
+
+
+</beans>
