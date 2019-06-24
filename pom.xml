@@ -53,25 +53,21 @@
             <version>2.9.0</version>
         </dependency>
 
+
         <dependency>
             <groupId>com.barchart.wrap</groupId>
             <artifactId>barchart-wrap-jackson</artifactId>
             <version>1.8.6-build001</version>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>sofa-rpc-all</artifactId>
             <version>5.3.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-            <version>2.1.6.RELEASE</version>
-        </dependency>
 
-        &lt;!&ndash; hibernate &ndash;&gt;
+        <!-- hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -83,9 +79,6 @@
             <version>${hibernate.version}</version>
         </dependency>
 
-
-
-        -->
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -299,10 +292,11 @@
         </dependency>
 
 
+        <!-- 注意: spring-data-redis 版本可能会导致启动报错 -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>2.1.5.RELEASE</version>
+            <version>1.7.2.RELEASE</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
