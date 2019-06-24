@@ -1,16 +1,17 @@
 package com.bobo.mall;
 
-import com.bobo.mall.api.entity.Address;
 import com.bobo.mall.api.entity.User;
 import com.bobo.mall.api.service.IUserService;
-import com.bobo.mall.service.impl.UserService;
 import org.junit.Test;
 import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Transaction;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class UserTest extends BaseTest {
 
