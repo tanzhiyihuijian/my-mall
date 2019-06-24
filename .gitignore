@@ -1,3 +1,8 @@
 
 *.iml
 /.idea
+
+
+/mall-api/target
+/mall-service/target
+/mall-mvc/target
