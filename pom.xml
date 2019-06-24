@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bobo.demo</groupId>
-    <artifactId>mall</artifactId>
+    <artifactId>mall-parent</artifactId>
     <version>1.0.0</version>
     <modules>
         <module>mall-api</module>
@@ -14,7 +14,7 @@
     </modules>
     <packaging>pom</packaging>
 
-    <name>mall</name>
+    <name>mall-parent</name>
 
 
 
@@ -36,22 +36,47 @@
         <servlet.api.version>2.3.3</servlet.api.version>
         <jsp.version>2.0</jsp.version>
         <druid.version>1.0.1</druid.version>
+        <hibernate.version>5.0.7.Final</hibernate.version>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>sofa-rpc-all</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.1-jre</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+
+        <!-- hibernate -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>2.1.5.RELEASE</version>
-        </dependency>
-
 
         <dependency>
             <groupId>com.barchart.wrap</groupId>

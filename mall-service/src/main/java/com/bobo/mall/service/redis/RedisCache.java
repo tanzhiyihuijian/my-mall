@@ -1,12 +1,8 @@
 package com.bobo.mall.service.redis;
 
-import com.sun.xml.internal.messaging.saaj.util.ByteOutputStream;
 import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.cache.Cache;
 import org.springframework.cache.support.SimpleValueWrapper;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 
