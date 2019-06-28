@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/cache" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-		http://www.springframework.org/schema/context
-		http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+		http://www.springframework.org/schema/cache
+		http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
        default-lazy-init="true">
 
+
+    <!-- 启用扫描并自动创建代理的功能。 -->
+    <jpa:repositories base-package="com.bobo.mall.api.dao.repo"
+                      transaction-manager-ref="transactionManager"
+                      entity-manager-factory-ref="entityManagerFactory"/>
+
+
+    <!-- 配置 JPA底层的ORM框架实现的适配器对象 -->
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" >
+        <property name="database" value="MYSQL" />
+        <property name="showSql" value="true" />
+        <!-- 是否建表 -->
+        <property name="generateDdl" value="true" />
+        <!-- 配置方言 -->
+        <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+    </bean>
+
+    <!-- 配置JPA的事务管理器   -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!-- spring将 jpa集成进来, 就不再需要写之前 jpa的配置文件 persistence.xml, 而是将那个文件里的大部分配置移到 spring配置文件里面来   -->
+    <!-- 配置 EntityManagerFactory对象  -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="mallDataSource" />
+        <!-- 配置扫描实体类的包 -->
+        <property name="packagesToScan" value="com.bobo.mall.api.entity" />
+        <!-- jpa的实现厂商有很多, spring需要知道你用的是哪个厂商的实现 -->
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
     </bean>
+
+    <!-- 配置声明式事务, 在需要事务环境的情况下加 @Transactional 注解即可   -->
+    <tx:annotation-driven />
 
 </beans>
