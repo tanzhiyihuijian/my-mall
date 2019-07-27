@@ -5,6 +5,7 @@
 
 /mall-api/target
 /mall-service/target
+/mall-service-boot/target
 /mall-mvc/target
 
 
