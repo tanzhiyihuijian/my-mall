@@ -1,14 +1,15 @@
 package com.bobo.mall;
 
+import com.bobo.mall.api.entity.Student;
 import com.bobo.mall.api.entity.User;
+import com.google.common.base.Objects;
+import com.google.common.base.Optional;
 import com.google.common.base.*;
 import com.google.common.collect.*;
 import org.junit.Test;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class GuavaTest {
 
@@ -64,6 +65,10 @@ public class GuavaTest {
         String toSplitString = "a=b;c=d,e=f";
         Map<String, String> map = Splitter.onPattern("[;,]{1,}").withKeyValueSeparator('=').split(toSplitString);
         System.out.println(map);
+
+        String s1 = "1-1|2-1|3-12|4-99";
+        Map<String, String> map1 = Splitter.onPattern("\\|").withKeyValueSeparator('-').split(s1);
+        System.out.println("map1: " + map1);
 
 
         // 5. 合并字符串
@@ -255,6 +260,25 @@ public class GuavaTest {
         boolean allIsStartWithP = Iterators.all(fruits.iterator(), condition);
         System.out.println("allIsStartWithP: " + allIsStartWithP);
 
+
+    }
+
+    @Test
+    public void f2() {
+
+        List<Student> list = new ArrayList<>();
+
+        Student s1 = new Student().setId(1).setScore(100);
+        Student s2 = new Student().setId(2).setScore(100);
+        Student s3 = new Student().setId(3).setScore(100);
+
+
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+
+        Map<Integer, Student> collect = list.stream().collect(Collectors.toMap(Student::getId, x -> x));
+        System.out.println(collect);
 
     }
 

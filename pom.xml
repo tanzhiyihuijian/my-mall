@@ -11,6 +11,7 @@
         <module>mall-api</module>
         <module>mall-mvc</module>
         <module>mall-service</module>
+        <module>mall-service-boot</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -7,6 +7,7 @@
 
 
     <import resource="spring-scan.xml" />
+    <import resource="spring-quartz.xml" />
 
 <!--    <task:annotation-driven />-->
 

@@ -16,5 +16,6 @@
     <import resource="spring-redis.xml" />
     <import resource="spring-cache.xml" />
     <import resource="spring-jpa.xml" />
+    <import resource="spring-quartz.xml" />
 
 </beans>

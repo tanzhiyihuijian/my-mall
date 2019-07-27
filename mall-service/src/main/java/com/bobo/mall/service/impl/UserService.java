@@ -20,14 +20,14 @@ public class UserService implements IUserService {
     private UserDao userDao;
 
     @Override
-    @Cacheable(cacheNames = "commonCache", key = "'user-id:' + #id", unless = "#result == null ")
+    @Cacheable(cacheNames = "user", key = "'user-id:' + #id", unless = "#result == null ")
     public User getUserById(int id) {
-        System.out.println(" search db ... ");
+        System.out.println(" search db ... userId = " + id);
         return userDao.getUserById(id);
     }
 
     @Override
-    @Cacheable(cacheNames = "commonCache", key = "'userList'")
+    @Cacheable(cacheNames = "user", key = "'userList'")
     public List<User> getUserList() {
         System.out.println(" search db ... ");
         return userDao.getUserList();
@@ -61,4 +61,17 @@ public class UserService implements IUserService {
     public int deleteUser(int id) {
         return userDao.deleteUserById(id);
     }
+
+
+    @Override
+    @CacheEvict(cacheNames = "user", allEntries = true)
+    public void deleteUserCache() {
+        System.out.println("清除缓存成功 ... ");
+    }
+
+
+
+
+
+
 }

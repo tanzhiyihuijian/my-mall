@@ -9,21 +9,24 @@
        default-lazy-init="true">
 
 
-    <cache:annotation-driven />
+    <cache:annotation-driven/>
 
-    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
-        <property name="caches">
+    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg name="redisOperations" ref="redisTemplate" />
+        <!--<property name="caches">
             <set>
                 <bean class="com.bobo.mall.service.redis.RedisCache">
-                    <property name="redisTemplate" ref="redisTemplate" />
-                    <property name="name" value="default" />
+                    <property name="redisTemplate" ref="redisTemplate"/>
+                    <property name="name" value="default"/>
                 </bean>
                 <bean class="com.bobo.mall.service.redis.RedisCache">
-                    <property name="redisTemplate" ref="redisTemplate" />
-                    <property name="name" value="commonCache" />
+                    <property name="redisTemplate" ref="redisTemplate"/>
+                    <property name="name" value="commonCache"/>
                 </bean>
             </set>
-        </property>
+        </property>-->
+
+
     </bean>
 
 

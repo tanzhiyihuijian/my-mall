@@ -124,12 +124,9 @@ public class UserTest extends BaseTest {
         userService.getUserById(2);
         userService.getUserById(11);
 
-        User oldUser = userService.getUserById(1);
-        System.out.println("oldUser: " + oldUser);
+//        userService.deleteUserCache();
 
-        userService.deleteUser(1);
-        User user = userService.getUserById(1);
-        System.out.println("user: " + user);
+//        userService.getUserById(2);
 
     }
 

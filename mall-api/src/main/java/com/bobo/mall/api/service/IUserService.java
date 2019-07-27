@@ -18,4 +18,6 @@ public interface IUserService {
 
     int deleteUser(int id);
 
+    void deleteUserCache();
+
 }
