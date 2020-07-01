@@ -31,7 +31,7 @@
         <jdbc.driver.version>5.1.13</jdbc.driver.version>
         <spring.version>4.3.12.RELEASE</spring.version>
         <mybatis.plus.version>2.3</mybatis.plus.version>
-        <quartz.version>2.1.1</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
         <slf4j.version>1.6.4</slf4j.version>
         <jackson.version>1.9.7</jackson.version>
         <servlet.api.version>2.3.3</servlet.api.version>
