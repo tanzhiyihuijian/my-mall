@@ -37,7 +37,7 @@
         <servlet.api.version>2.3.3</servlet.api.version>
         <jsp.version>2.0</jsp.version>
         <druid.version>1.0.1</druid.version>
-        <hibernate.version>5.0.7.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
 
         <!-- spring data jpa 1.11.8 <=> spring 4.3.12 -->
         <spring.data.jpa.version>1.11.8.RELEASE</spring.data.jpa.version>
